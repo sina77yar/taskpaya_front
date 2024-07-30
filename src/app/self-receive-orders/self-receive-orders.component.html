@@ -1,0 +1,107 @@
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row" style="direction:rtl;">
+
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">سفارشات دریافت حضوری</h4>
+                        <p class="card-description"> سفارشات زیر پرداخت شده اند و مشتری شخصاً جهت دریافت به فروشگاه مراجعه میکند.
+                        </p>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th> شماره فاکتور </th>
+                                        <th> نام مشتری </th>
+                                        <th> تاریخ پرداخت </th>
+                                        <th> عملیات </th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of this.order">
+                                        <td class="py-1">
+                                            {{item.factorCode}}
+                                        </td>
+                                        <td> {{item.user.firstName}} {{item.user.lastName+''}} </td>
+
+                                        <td> {{item.paymentDate}} </td>
+                                        <td>
+                                            <button class="btn btn-info btn-icon-text m-1" (click)="GetOrderListById(item.id)">جزئیات 
+                                                <i class="fa fa-reorder btn-icon-append"></i>
+                                            </button>
+                                            <button class="btn btn-success btn-icon-text">تحویل داده شد 
+                                                <i class="fa fa-send btn-icon-append"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">جزئیات سفارش</h4>
+                        <p class="card-description"> جهت نمایش جزئیات هر سفارش دکمه جزئیات آن سفارش را بزنید.
+                        </p>
+                        <div class="table-responsive">
+                            <table class="table table-hover" *ngIf="orderdetail">
+                                <thead>
+                                    <tr>
+                                        <th>شناسه محصول</th>
+                                        <th>نام محصول</th>
+                                        <th>تعداد</th>
+                                        <th>قیمت</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of orderdetail">
+                                        <td>{{item.product.id}}</td>
+                                        <td>{{item.product.productName}}</td>
+                                        <td>{{item.count}}</td>
+                                        <td class="text-danger">{{item.price|number}}تومان</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">مجموع فاکتور</h4>
+                        <p class="card-description"> جهت نمایش ابتدا دکمه جزئیات سفارش را بزنید.
+                        </p>
+                        <div class="table-responsive">
+                            <table class="table table-striped" *ngIf="orderdetail">
+                                <thead>
+                                    <tr>
+                                        <th>مجموع سبد خرید به جز هزینه ارسال</th>
+                                        <th>وضعیت</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{FinalSum|number}}تومان</td>
+                                        <td><label class="badge badge-success">انجام شده</label></td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
