@@ -96,4 +96,10 @@ export class ProductService {
       `api/Products/AddProduct`,
       fd)
   }
+  Get10LimitedProducts(): Observable<IResponseResult<any>> {
+    return this.http.get<IResponseResult<any>>('api/Products/Get10LimitedProducts');
+  }
+  GetProductByIdWithAll(id: number): Observable<IResponseResult<ProductDTO>> {
+    return this.http.get<IResponseResult<ProductDTO>>('api/Products/GetProductByIdWithAll/' + id)
+  }
 }

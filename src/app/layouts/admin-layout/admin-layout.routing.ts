@@ -6,6 +6,7 @@ import { SelfReceiveOrdersComponent } from '../../self-receive-orders/self-recei
 import { ProductsComponent } from '../../products/products.component';
 import { ProductcolorsComponent } from '../../products/productcolors/productcolors.component';
 import { ProductsizeComponent } from '../../products/productsize/productsize.component';
+import { DiscountCodeComponent } from '../../discount-code/discount-code.component';
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
     { path: 'orders',      component: OrdersComponent },
@@ -14,4 +15,5 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'products',      component:     ProductsComponent },
     { path: 'color',      component:     ProductcolorsComponent },
     { path: 'size',      component:     ProductsizeComponent },
+    { path: 'discountcode',      component:     DiscountCodeComponent },
 ];

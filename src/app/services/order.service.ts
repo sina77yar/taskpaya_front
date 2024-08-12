@@ -35,4 +35,13 @@ export class OrderService {
     GetOrderListById(id: number): Observable<IResponseResult<any>> {
         return this.http.get<IResponseResult<any>>('api/Order/GetOrderListById/' + id);
     }
+    SetOrderSent(orderId: number): Observable<IResponseResult<any>> {
+        return this.http.get<IResponseResult<any>>('api/Order/SetOrderSent/' + orderId);
+    }
+    SetOrderSelfRecieved(orderId: number): Observable<IResponseResult<any>> {
+        return this.http.get<IResponseResult<any>>('api/Order/SetOrderSelfRecieved/' + orderId);
+    }
+    GetAllDiscountCode(): Observable<IResponseResult<any>> {
+        return this.http.get<IResponseResult<any>>('api/Order/GetAllDiscountCode');
+    }
 }

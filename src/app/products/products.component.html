@@ -5,238 +5,80 @@
 
                 <div class="tab-content tab-content-basic">
                     <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview">
-                        <div class="col-12 grid-margin stretch-card">
-                            <div class="card card-rounded">
-                                <div class="card-body" style="direction: rtl;">
-                                    <div class="d-sm-flex justify-content-between align-items-start">
-                                        <div>
-                                            <h4 class="card-title card-title-dash">لیست محصولات</h4>
-                                            <!-- <p class="card-subtitle card-subtitle-dash">You have 50+ new requests</p> -->
-                                        </div>
-                                        <div>
-                                            <button class="btn btn-primary btn-lg text-white mb-0 me-0" type="button" (click)="AddProduct()">اضافه کردن محصول جدید</button>
-                                        </div>
-                                    </div>
-                                    <div class="table-responsive  mt-1">
-                                        <p-table styleClass="p-datatable-gridlines" [value]="products" [paginator]="true" [rows]="5" [tableStyle]="{ 'min-width': '50rem','font-family': 'iransans','text-align': 'right' }">
-                                            <ng-template pTemplate="header">
-                                                <tr>
-                                                    <th colspan="1"> شناسه محصول </th>
-                                                    <th colspan="4"> نام محصول </th>
-                                                    <th colspan="1"> تصویر محصول </th>
-                                                    <th colspan="4"> توضیحات </th>
-                                                    <th colspan="1">قیمت</th>
-                                                    <th colspan="1">تعداد موجودی</th>
-                                                    <th colspan="1"> عملیات </th>
-                                                </tr>
-                                            </ng-template>
-                                            <ng-template pTemplate="body" let-product>
-                                                <tr>
-                                                    <td colspan="1">{{ product.id }}</td>
-                                                    <td colspan="4">{{ product.productName}} </td>
-                                                    <td colspan="1">
-                                                        <img [alt]="product.productName" src="{{ imagePath+product.imageName }}" width="50" class="vertical-align-middle" />
-                                                    </td>
-                                                    <td colspan="4">{{ product.description }}</td>
-                                                    <td colspan="1">{{ product.price|number }} تومان </td>
-                                                    <td colspan="1">{{ product.stock }}</td>
-                                                    <td colspan="1">
-                                                        <button class="btn btn-warning btn-sm  text-white mb-0 me-0" type="button">ویرایش</button>
-                                                        <button class="btn btn-info btn-sm  text-white mb-0 me-0" type="button">جزئیات</button>
-                                                    </td>
-                                                </tr>
-                                            </ng-template>
-                                        </p-table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="row">
-                            <div class="col-lg-8 d-flex flex-column">
+                            <div class="col-lg-9 d-flex flex-column">
 
 
-                                <div class="row flex-grow">
-                                    <div class="col-12 grid-margin stretch-card">
-                                        <div class="card card-rounded">
-                                            <div class="card-body" style="direction: rtl;">
-                                                <div class="d-sm-flex justify-content-between align-items-start">
-                                                    <div>
-                                                        <h4 class="card-title card-title-dash">لیست محصولات</h4>
-                                                        <!-- <p class="card-subtitle card-subtitle-dash">You have 50+ new requests</p> -->
-                                                    </div>
-                                                    <div>
-                                                        <button class="btn btn-primary btn-lg text-white mb-0 me-0" type="button" (click)="AddProduct()">اضافه کردن محصول جدید</button>
-                                                    </div>
-                                                </div>
-                                                <div class="table-responsive  mt-1">
-                                                    <p-table styleClass="p-datatable-gridlines" [value]="products" [paginator]="true" [rows]="5" [tableStyle]="{ 'min-width': '50rem','font-family': 'iransans','text-align': 'right' }">
-                                                        <ng-template pTemplate="header">
-                                                            <tr>
-                                                                <th colspan="1"> شناسه محصول </th>
-                                                                <th colspan="4"> نام محصول </th>
-                                                                <th colspan="1"> تصویر محصول </th>
-                                                                <th colspan="4"> توضیحات </th>
-                                                                <th colspan="1">قیمت</th>
-                                                                <th colspan="1">تعداد موجودی</th>
-                                                                <th colspan="1"> عملیات </th>
-                                                            </tr>
-                                                        </ng-template>
-                                                        <ng-template pTemplate="body" let-product>
-                                                            <tr>
-                                                                <td colspan="1">{{ product.id }}</td>
-                                                                <td colspan="4">{{ product.productName}} </td>
-                                                                <td colspan="1">
-                                                                    <img [alt]="product.productName" src="{{ imagePath+product.imageName }}" width="50" class="vertical-align-middle" />
-                                                                </td>
-                                                                <td colspan="4">{{ product.description }}</td>
-                                                                <td colspan="1">{{ product.price|number }} تومان </td>
-                                                                <td colspan="1">{{ product.stock }}</td>
-                                                                <td colspan="1">
-                                                                    <button class="btn btn-warning btn-sm  text-white mb-0 me-0" type="button">ویرایش</button>
-
-                                                                </td>
-                                                            </tr>
-                                                        </ng-template>
-                                                    </p-table>
-                                                </div>
+                                <div class="card card-rounded">
+                                    <div class="card-body" style="direction: rtl;">
+                                        <div class="d-sm-flex justify-content-between align-items-start">
+                                            <div>
+                                                <h4 class="card-title card-title-dash">لیست محصولات</h4>
+                                                <!-- <p class="card-subtitle card-subtitle-dash">You have 50+ new requests</p> -->
                                             </div>
+                                            <div>
+                                                <button class="btn btn-primary btn-lg text-white mb-0 me-0" type="button" (click)="AddProduct()">اضافه کردن محصول جدید</button>
+                                            </div>
+                                        </div>
+                                        <div class="table-responsive  mt-1">
+                                            <p-table styleClass="p-datatable-gridlines" [value]="products" [paginator]="true" [rows]="6" [tableStyle]="{ 'min-width': '50rem','font-family': 'iransans','text-align': 'right' }">
+                                                <ng-template pTemplate="header">
+                                                    <tr>
+                                                        <th colspan="1"> شناسه محصول </th>
+                                                        <th colspan="4"> نام محصول </th>
+                                                        <th colspan="1"> تصویر محصول </th>
+                                                        <th colspan="4"> توضیحات </th>
+                                                        <th colspan="1">قیمت</th>
+                                                        <th colspan="1">تعداد موجودی</th>
+                                                        <th colspan="1"> عملیات </th>
+                                                    </tr>
+                                                </ng-template>
+                                                <ng-template pTemplate="body" let-product>
+                                                    <tr>
+                                                        <td colspan="1">{{ product.id }}</td>
+                                                        <td colspan="4">{{ product.productName}} </td>
+                                                        <td colspan="1">
+                                                            <img [alt]="product.productName" src="{{ imagePath+product.imageName }}" width="50" class="vertical-align-middle" />
+                                                        </td>
+                                                        <td colspan="4">{{ product.description }}</td>
+                                                        <td colspan="1">{{ product.price|number }} تومان </td>
+                                                        <td colspan="1">{{ product.stock }}</td>
+                                                        <td colspan="1">
+                                                            <button class="btn btn-warning btn-sm  text-white mb-0 me-0" type="button" (click)="ShowEditProduct(product.id)">ویرایش</button>
+                                                            <button class="btn btn-info btn-sm  text-white mb-0 me-0" type="button" (click)="ShowGalleryProduct()">گالری</button>
+                                                        </td>
+                                                    </tr>
+                                                </ng-template>
+                                            </p-table>
                                         </div>
                                     </div>
                                 </div>
 
                             </div>
-                            <div class="col-lg-4 d-flex flex-column">
+                            <div class="col-lg-3 d-flex flex-column">
                                 <div class="row flex-grow">
                                     <div class="col-12 grid-margin stretch-card">
                                         <div class="card card-rounded">
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="col-lg-12">
-                                                        <div class="d-flex justify-content-between align-items-center">
-                                                            <h4 class="card-title card-title-dash">Todo list</h4>
-                                                            <div class="add-items d-flex mb-0">
-                                                                <!-- <input type="text" class="form-control todo-list-input" placeholder="What do you need to do today?"> -->
-                                                                <button class="add btn btn-icons btn-rounded btn-primary todo-list-add-btn text-white me-0 pl-12p"><i class="mdi mdi-plus"></i></button>
-                                                            </div>
-                                                        </div>
-                                                        <div class="list-wrapper">
-                                                            <ul class="todo-list todo-list-rounded">
-                                                                <li class="d-block">
-                                                                    <div class="form-check w-100">
-                                                                        <label class="form-check-label">
-                                        <input class="checkbox" type="checkbox"> Lorem Ipsum is simply dummy text of the printing <i class="input-helper rounded"></i>
-                                      </label>
-                                                                        <div class="d-flex mt-2">
-                                                                            <div class="ps-4 text-small me-3">24 June 2020</div>
-                                                                            <div class="badge badge-opacity-warning me-3">Due tomorrow</div>
-                                                                            <i class="mdi mdi-flag ms-2 flag-color"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                                <li class="d-block">
-                                                                    <div class="form-check w-100">
-                                                                        <label class="form-check-label">
-                                        <input class="checkbox" type="checkbox"> Lorem Ipsum is simply dummy text of the printing <i class="input-helper rounded"></i>
-                                      </label>
-                                                                        <div class="d-flex mt-2">
-                                                                            <div class="ps-4 text-small me-3">23 June 2020</div>
-                                                                            <div class="badge badge-opacity-success me-3">Done</div>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                                <li>
-                                                                    <div class="form-check w-100">
-                                                                        <label class="form-check-label">
-                                        <input class="checkbox" type="checkbox"> Lorem Ipsum is simply dummy text of the printing <i class="input-helper rounded"></i>
-                                      </label>
-                                                                        <div class="d-flex mt-2">
-                                                                            <div class="ps-4 text-small me-3">24 June 2020</div>
-                                                                            <div class="badge badge-opacity-success me-3">Done</div>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                                <li class="border-bottom-0">
-                                                                    <div class="form-check w-100">
-                                                                        <label class="form-check-label">
-                                        <input class="checkbox" type="checkbox"> Lorem Ipsum is simply dummy text of the printing <i class="input-helper rounded"></i>
-                                      </label>
-                                                                        <div class="d-flex mt-2">
-                                                                            <div class="ps-4 text-small me-3">24 June 2020</div>
-                                                                            <div class="badge badge-opacity-danger me-3">Expired</div>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row flex-grow">
-                                    <div class="col-12 grid-margin stretch-card">
-                                        <div class="card card-rounded">
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    <div class="col-lg-12">
-                                                        <div class="d-flex justify-content-between align-items-center mb-3">
+                                                        <div class="d-flex justify-content-between align-items-center mb-3" style="align-content: center;">
                                                             <div>
-                                                                <h4 class="card-title card-title-dash">Top Performer</h4>
+                                                                <h4 class="card-title card-title-dash">لیست محصولات رو به اتمام</h4>
                                                             </div>
                                                         </div>
                                                         <div class="mt-3">
-                                                            <div class="wrapper d-flex align-items-center justify-content-between py-2 border-bottom">
+
+                                                            <div *ngFor="let item of LimitedProducts" class="wrapper d-flex align-items-center justify-content-between py-2 border-bottom">
                                                                 <div class="d-flex">
-                                                                    <img class="img-sm rounded-10" src="assets/images/faces/face1.jpg" alt="profile">
+                                                                    <img class="img-sm rounded-10" src="{{ imagePath+item.imageName }}" alt="محصول">
                                                                     <div class="wrapper ms-3">
-                                                                        <p class="ms-1 mb-1 fw-bold">Brandon Washington</p>
-                                                                        <small class="text-muted mb-0">162543</small>
+                                                                        <p class="ms-1 mb-1 fw-bold">{{item.productName}}</p>
+                                                                        <small class="text-muted mb-0">موجودی: {{item.stock}}</small>
                                                                     </div>
                                                                 </div>
-                                                                <div class="text-muted text-small"> 1h ago </div>
                                                             </div>
-                                                            <div class="wrapper d-flex align-items-center justify-content-between py-2 border-bottom">
-                                                                <div class="d-flex">
-                                                                    <img class="img-sm rounded-10" src="assets/images/faces/face2.jpg" alt="profile">
-                                                                    <div class="wrapper ms-3">
-                                                                        <p class="ms-1 mb-1 fw-bold">Wayne Murphy</p>
-                                                                        <small class="text-muted mb-0">162543</small>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="text-muted text-small"> 1h ago </div>
-                                                            </div>
-                                                            <div class="wrapper d-flex align-items-center justify-content-between py-2 border-bottom">
-                                                                <div class="d-flex">
-                                                                    <img class="img-sm rounded-10" src="assets/images/faces/face3.jpg" alt="profile">
-                                                                    <div class="wrapper ms-3">
-                                                                        <p class="ms-1 mb-1 fw-bold">Katherine Butler</p>
-                                                                        <small class="text-muted mb-0">162543</small>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="text-muted text-small"> 1h ago </div>
-                                                            </div>
-                                                            <div class="wrapper d-flex align-items-center justify-content-between py-2 border-bottom">
-                                                                <div class="d-flex">
-                                                                    <img class="img-sm rounded-10" src="assets/images/faces/face4.jpg" alt="profile">
-                                                                    <div class="wrapper ms-3">
-                                                                        <p class="ms-1 mb-1 fw-bold">Matthew Bailey</p>
-                                                                        <small class="text-muted mb-0">162543</small>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="text-muted text-small"> 1h ago </div>
-                                                            </div>
-                                                            <div class="wrapper d-flex align-items-center justify-content-between pt-2">
-                                                                <div class="d-flex">
-                                                                    <img class="img-sm rounded-10" src="assets/images/faces/face5.jpg" alt="profile">
-                                                                    <div class="wrapper ms-3">
-                                                                        <p class="ms-1 mb-1 fw-bold">Rafell John</p>
-                                                                        <small class="text-muted mb-0">Alaska, USA</small>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="text-muted text-small"> 1h ago </div>
-                                                            </div>
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -246,6 +88,7 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -270,7 +113,7 @@
                         <div class="form-group col-md-6">
                             <label for="exampleInputUsername1">بارکد محصول</label>
                             <span class="m-1" style="color: red; font-size: 10pt;">*</span>
-                            <input type="text" class="form-control" formControlName="Barcode" placeholder="بارکد محصول">
+                            <input type="number" class="form-control" formControlName="Barcode" placeholder="بارکد محصول">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="exampleInputUsername1">نام محصول</label>
@@ -292,7 +135,7 @@
                         <div class="form-group col-md-6">
                             <label for="exampleInputConfirmPassword1">قیمت</label>
                             <span class="m-1" style="color: red; font-size: 10pt;">*</span>
-                            <input type="text" class="form-control" formControlName="Price" placeholder="به تومان">
+                            <input type="number" class="form-control" formControlName="Price" placeholder="به تومان">
                         </div>
                     </div>
                     <div class="row">
@@ -307,7 +150,7 @@
                             <label for="exampleInputUsername1">تعداد موجودی</label>
                             <span class="m-1" style="color: red; font-size: 10pt;">*</span>
 
-                            <input type="text" class="form-control" formControlName="Stock" placeholder="تعداد موجودی">
+                            <input type="number" class="form-control" formControlName="Stock" placeholder="تعداد موجودی">
                         </div>
                     </div>
 
@@ -329,14 +172,14 @@
                         <div class="form-group col-md-6">
                             <label for="exampleInputEmail1">درصد تخفیف</label>
                             <span class="m-1" style="color: red; font-size: 10pt;">*</span>
-                            <input type="email" class="form-control" formControlName="DiscountPercent" placeholder="درصد تخفیف">
+                            <input type="number" class="form-control" formControlName="DiscountPercent" placeholder="درصد تخفیف">
 
                         </div>
                         <div class="form-group col-md-6">
                             <label for="exampleInputEmail1">وزن محصول به گرم</label>
                             <span class="m-1" style="color: red; font-size: 10pt;">*</span>
 
-                            <input type="email" class="form-control" formControlName="Weight" placeholder="وزن محصول">
+                            <input type="number" class="form-control" formControlName="Weight" placeholder="وزن محصول">
                         </div>
                     </div>
                     <div class="row">
@@ -352,18 +195,34 @@
                             <p-checkbox formControlName="IsDiscounted" value="true" inputId="1" />
                             <span class="m-1" style="color: red; font-size: 10pt;">*</span>
                             <label for="ny">تخفیف خورده</label></div>
-                
+
 
                     </div>
                     <div class="form-group pt-3">
-                        <label for="exampleInputConfirmPassword1">تصویر محصول</label>
+                        <label for="exampleInputConfirmPassword1">تصویر شاخص محصول</label>
                         <span class="m-1" style="color: red; font-size: 10pt;">*</span>
+                        <span class="m-1" style="color: red; font-size: 10pt;">برای زیبایی بهتر سایز عکس را 231*292 پیکسل در نظر بگیرید</span>
 
                         <div class="card flex justify-content-center">
 
-                            <p-fileUpload #fubauto mode="basic" name="demo[]" accept="image/*" maxFileSize="1000000" [customUpload]="true" (uploadHandler)="onFileSelected($event)" [auto]="true" chooseLabel="انتخاب کنید"></p-fileUpload>
-                            <span class="m-1" style="color: red; font-size: 10pt;">برای زیبایی بهتر سایز عکس را 231*292 پیکسل در نظر بگیرید</span>
+                            <p-fileUpload mode="advanced" name="demo[]" accept="image/*" maxFileSize="1000000" [customUpload]="true" (uploadHandler)="onFileSelected($event)" (onRemove)="onremove($event)" [auto]="true" chooseLabel="انتخاب کنید"></p-fileUpload>
+
                         </div>
+                    </div>
+                    <div class="form-group pt-3">
+                        <label for="exampleInputConfirmPassword1">گالری تصاویر محصول</label>
+                        <span class="m-1" style="color: red; font-size: 10pt;">*</span>
+                        <span class="m-1" style="color: red; font-size: 10pt;">برای زیبایی بهتر سایز عکس را 231*292 پیکسل در نظر بگیرید</span>
+
+                        <p-fileUpload [customUpload]="true" (onRemove)="onremoves($event)" (uploadHandler)="onFilesSelected($event)" [auto]="true" showUploadButton="false" chooseStyleClass="ml-1" cancelLabel="لغو همه" chooseLabel="انتخاب کنید" mode="advanced" name="demo[]" multiple="multiple"
+                            accept="image/*" maxFileSize="1000000">
+                            <ng-template>
+                                <ul *ngIf="uploadedFiles.length">
+                                    <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+                                </ul>
+                            </ng-template>
+                        </p-fileUpload>
+
                     </div>
                     <button type="submit " class="btn btn-primary me-2 m-2 " (click)="SubmitNewProduct()">ثبت</button>
                     <button class="btn btn-light " (click)="closeModal() ">خروج</button>
@@ -373,6 +232,139 @@
     </div>
 </p-dialog>
 
+<p-dialog header="ویرایش محصول" [modal]="true" [(visible)]="VisibleEdit" [style]="{ 'width': '50rem','font-family':'iransans'}">
+    <div class="col-md-12 grid-margin stretch-card" dir="rtl">
+        <div class="card">
+            <div class="card-body">
+                <form class="forms-sample" [formGroup]="productForm">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputUsername1">بارکد محصول</label>
+                            <span class="m-1" style="color: red; font-size: 10pt;">*</span>
+                            <input type="number" class="form-control" formControlName="Barcode" placeholder="بارکد محصول">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputUsername1">نام محصول</label>
+                            <span class="m-1" style="color: red; font-size: 10pt;">*</span>
+                            <input type="text" class="form-control" formControlName="ProductName" placeholder="نام محصول">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">توضیحات</label>
+                        <span class="m-1" style="color: red; font-size: 10pt;">*</span>
+                        <input type="email" class="form-control" formControlName="Description" placeholder="توضیحات">
+                    </div>
+                    <div class="row">
+
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputPassword1">دسته بندی</label>
+                            <span class="m-1" style="color: red; font-size: 10pt;">*</span>
+                            <p-dropdown formControlName="selectedCat" [options]="categories" optionValue="id" [(ngModel)]="selectedCat" optionLabel="title" placeholder="انتخاب کنید" /> </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputConfirmPassword1">قیمت</label>
+                            <span class="m-1" style="color: red; font-size: 10pt;">*</span>
+                            <input type="number" class="form-control" formControlName="Price" placeholder="به تومان">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputConfirmPassword1">توضیح کوتاه</label>
+                            <span class="m-1" style="color: red; font-size: 10pt;">*</span>
+
+                            <input type="text" class="form-control" formControlName="ShortDescription" placeholder="توضیح کوتاه">
+
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputUsername1">تعداد موجودی</label>
+                            <span class="m-1" style="color: red; font-size: 10pt;">*</span>
+
+                            <input type="number" class="form-control" formControlName="Stock" placeholder="تعداد موجودی">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputPassword1">رنگ بندی</label>
+                            <span class="m-1" style="color: red; font-size: 10pt;">*</span>
+
+                            <p-multiSelect formControlName="selectedcolors" [filter]="false" [options]="colors" optionValue="id" optionLabel="colorName" placeholder="انتخاب کنید" />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputPassword1">سایز بندی</label>
+                            <span class="m-1" style="color: red; font-size: 10pt;">*</span>
+
+                            <p-multiSelect formControlName="selectedsizes" [filter]="false" [options]="sizes" optionValue="id" optionLabel="sizeName" placeholder="انتخاب کنید" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">درصد تخفیف</label>
+                            <span class="m-1" style="color: red; font-size: 10pt;">*</span>
+                            <input type="number" class="form-control" formControlName="DiscountPercent" placeholder="درصد تخفیف">
+
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">وزن محصول به گرم</label>
+                            <span class="m-1" style="color: red; font-size: 10pt;">*</span>
+
+                            <input type="number" class="form-control" formControlName="Weight" placeholder="وزن محصول">
+                        </div>
+                    </div>
+
+                    <div class="form-group pt-3">
+                        <label for="exampleInputConfirmPassword1">تصویر شاخص محصول</label>
+
+                        <span class="m-1" style="color: red; font-size: 10pt;">*</span>
+                        <span class="m-1" style="color: red; font-size: 10pt;">برای زیبایی بهتر سایز عکس را 231*292 پیکسل در نظر بگیرید</span>
+                        <br/>
+                        <span class="m-1" style="color: red; font-size: 10pt;">تصویر کنونی: درصورت آپلود جدید این عکس حذف و عکس جدید جایگزین میشود==></span>
+                        <img src="{{ imagePath+this.imageName }}" width="90" class="vertical-align-middle p-2 mr-7" />
+
+                        <div class="card flex justify-content-center">
+
+                            <p-fileUpload mode="advanced" name="demo[]" accept="image/*" maxFileSize="1000000" [customUpload]="true" (uploadHandler)="onFileSelected($event)" (onRemove)="onremove($event)" [auto]="true" chooseLabel="انتخاب کنید"></p-fileUpload>
+
+                        </div>
+                    </div>
+
+                    <button type="submit " class="btn btn-primary me-2 m-2 " (click)="SubmitNewProduct()">ثبت</button>
+                    <button class="btn btn-light " (click)="closeModal() ">خروج</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</p-dialog>
+
+
+
+<p-dialog header="گالری تصاویر محصول" [modal]="true" [(visible)]="visibleGallery" [style]="{ 'width': '50rem','font-family':'iransans'}">
+    <div class="col-md-12 grid-margin stretch-card" dir="rtl">
+        <div class="card">
+            <div class="card-body">
+                <form class="forms-sample" [formGroup]="productForm">
+
+                    <div class="form-group pt-3">
+                        <label for="exampleInputConfirmPassword1">گالری تصاویر محصول</label>
+                        <span class="m-1" style="color: red; font-size: 10pt;">*</span>
+                        <span class="m-1" style="color: red; font-size: 10pt;">برای زیبایی بهتر سایز عکس را 231*292 پیکسل در نظر بگیرید</span>
+
+                        <p-fileUpload [customUpload]="true" (onRemove)="onremoves($event)" (uploadHandler)="onFilesSelected($event)" [auto]="true" showUploadButton="false" chooseStyleClass="ml-1" cancelLabel="لغو همه" chooseLabel="انتخاب کنید" mode="advanced" name="demo[]" multiple="multiple"
+                            accept="image/*" maxFileSize="1000000">
+                            <ng-template>
+                                <ul *ngIf="uploadedFiles.length">
+                                    <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+                                </ul>
+                            </ng-template>
+                        </p-fileUpload>
+
+                    </div>
+                    <button type="submit " class="btn btn-primary me-2 m-2 " (click)="SubmitNewProduct()">ثبت</button>
+                    <button class="btn btn-light " (click)="closeModal() ">خروج</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</p-dialog>
 <swal #emptyField title="تمامی موارد باید پر شود" position="top-end" icon="error" [showConfirmButton]="false" [timer]="3000">
 </swal>
 <swal #successFire title="با موفقیت انجام شد" position="top-end" icon="success" [showConfirmButton]="false" [timer]="3000">

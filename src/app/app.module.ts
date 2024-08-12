@@ -15,13 +15,17 @@ import { ProductcolorsComponent } from './products/productcolors/productcolors.c
 import { ProductsizeComponent } from './products/productsize/productsize.component';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { AdminLayoutModule } from './layouts/admin-layout/admin-layout.module';
+import { DiscountCodeComponent } from './discount-code/discount-code.component';
+import { DpDatePickerModule } from 'ng2-jalali-date-picker';
 
 @NgModule({
   declarations: [
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
- 
+
+
+
 
   ],
   imports: [
@@ -29,11 +33,11 @@ import { AdminLayoutModule } from './layouts/admin-layout/admin-layout.module';
     ReactiveFormsModule,
     AppRoutingModule,
     ComponentsModule,
-   AdminLayoutModule,
-   
+    AdminLayoutModule,
     
   ],
   providers: [
+    DpDatePickerModule ,
     CookieService, {
       provide: HTTP_INTERCEPTORS,
       useClass: TabaInterceptor,

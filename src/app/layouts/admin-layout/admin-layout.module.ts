@@ -15,7 +15,7 @@ import { OrderService } from '../../services/order.service';
 import { OrdersComponent } from '../../orders/orders.component';
 import { SettingComponent } from '../../setting/setting.component';
 import { SelfReceiveOrdersComponent } from '../../self-receive-orders/self-receive-orders.component';
-import { TableModule } from 'primeng/table'; 
+import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { MultiSelectModule } from 'primeng/multiselect';
@@ -26,7 +26,12 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { DropdownModule } from 'primeng/dropdown';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { CheckboxModule } from 'primeng/checkbox';
+import { DiscountCodeComponent } from '../../discount-code/discount-code.component';
 // import { ToastrModule } from 'ngx-toastr';
+import * as jalaliMoment from "jalali-moment";
+import { PersianCalendarService } from '../shared/PersianCalendarService';
+import { DpDatePickerModule } from 'ng2-jalali-date-picker';
+import { NzDatePickerModule, NzDateAdapter } from 'ngz-shamsi-datepicker';
 
 @NgModule({
   imports: [
@@ -42,6 +47,7 @@ import { CheckboxModule } from 'primeng/checkbox';
     FileUploadModule,
     DropdownModule,
     CheckboxModule,
+    NzDatePickerModule,
     SweetAlert2Module.forRoot(),
     // NgbModule,
     // ClipboardModule,
@@ -57,7 +63,9 @@ import { CheckboxModule } from 'primeng/checkbox';
     ProductsComponent,
     ProductcolorsComponent,
     ProductsizeComponent,
+    DiscountCodeComponent,
   ],
+  providers: [DpDatePickerModule,],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
   ],

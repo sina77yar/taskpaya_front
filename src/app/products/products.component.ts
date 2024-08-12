@@ -20,6 +20,8 @@ export class ProductsComponent implements OnInit {
   products: ProductDTO[] = [];
   imagePath = ImagePath
   visible: boolean = false
+  visibleGallery: boolean = false
+  VisibleEdit: boolean = false
   colors: any[];
   categories: any[];
   selectedCat: any[];
@@ -30,6 +32,7 @@ export class ProductsComponent implements OnInit {
   value!: number;
   uploadedFiles: any[] = [];
   fileToUpload: File | null = null;
+  LimitedProducts: any;
   @ViewChild('emptyField')
   public readonly emptyField: SwalComponent;
   @ViewChild('successFire')
@@ -44,7 +47,7 @@ export class ProductsComponent implements OnInit {
         Validators.required,
         Validators.maxLength(100)
       ]),
-      DiscountPercent: new FormControl(0, [
+      DiscountPercent: new FormControl(null, [
         Validators.required,
         Validators.maxLength(100)
       ]),
@@ -80,6 +83,7 @@ export class ProductsComponent implements OnInit {
     this.GetAllColors();
     this.GetAllSize();
     this.GetAllCategories();
+    this.Get10LimitedProducts();
   }
   GetAllProductsWithCat() {
     this.productService.GetAllProductsWithCat().subscribe(res => {
@@ -106,16 +110,21 @@ export class ProductsComponent implements OnInit {
     })
   }
   AddProduct() {
+    this.productForm.reset();
     this.visible = true;
   }
+  ShowGalleryProduct() {
+    this.visibleGallery = true;
+  }
   SubmitNewProduct() {
-    if (this.productForm.invalid) {
+
+    if (this.productForm.invalid || this.selectedFile == undefined) {
       this.emptyField.fire();
+      return
     }
     const fd = new FormData();
 
     fd.append('fileAN', this.selectedFile); // , this.selectedFile.name
-    debugger
     var isExist = false;
     var isSpecial = false;
     var isDiscounted = false;
@@ -187,6 +196,7 @@ export class ProductsComponent implements OnInit {
       })
   }
   selectedFile!: File;
+  selectedFileGallery!: File
 
   // onFileSelected(event: any) {
   //   debugger
@@ -195,26 +205,65 @@ export class ProductsComponent implements OnInit {
   onFileSelected(event: any) {
 
     this.selectedFile = <File>event.files[0];
+    console.log(this.selectedFile);
   }
+  onFilesSelected(event: any) {
+    debugger
+    this.selectedFileGallery = <File>event.files
 
 
-  // onUpload(event) {
-  //   debugger
-  //   for (let file of event.files) {
-  //     this.uploadedFiles.push(file);
-  //   }
+    // this.selectedFileGallery = <File>event.files[0];
+  }
+  onremoves(event: any) {
+    debugger
+    debugger
+    var a = event.file
+    // var deleted =this.selectedFileGallery.findIndex(ab => ab.name == a.name)
+    // this.selectedFileGallery.splice(deleted,1)
+    // this.selectedFileGallery.reduce(b => b.name == a.name)
+    console.log(this.selectedFileGallery);
+  }
+  onremove(event: any) {
+    debugger
+    this.selectedFile = undefined;
+    // this.  selectedFile!: File;
 
-  //   // this.messageService.add({severity: 'info', summary: 'File Uploaded', detail: ''});
-  // }
-  // handleFileInput(files: FileList) {
-  //   debugger
-  //   this.fileToUpload = files.item(0);
-  // }
-  // onBasicUploadAuto(event: UploadEvent) {
-  //   debugger
-  //   // this.messageService.add({ severity: 'info', summary: 'Success', detail: 'File Uploaded with Auto Mode' });
-  // }
+
+  }
   closeModal() {
     this.visible = false;
+    this.visibleGallery = false;
+    this.VisibleEdit = false;
+  }
+  Get10LimitedProducts() {
+    this.productService.Get10LimitedProducts().subscribe(res => {
+      this.LimitedProducts = res.data;
+      console.log(this.LimitedProducts);
+
+    })
+  }
+  imageName: "";
+  ShowEditProduct(id) {
+    this.VisibleEdit = true;
+    this.productService.GetProductByIdWithAll(id).subscribe(res => {
+      const product = res.data[0];
+      console.log(product);
+      this.imageName = product.imageName;
+      this.productForm.patchValue({
+        ProductName: product.productName,
+        Stock: product.stock,
+        ShortDescription: product.shortDescription,
+        DiscountPercent: product.discountPercent,
+        Description: product.description,
+        Price: product.price,
+        Barcode: product.barcode,
+        Weight: product.weight,
+        ImageName: product.imageName,
+        IsSpecial: product.isSpecial,
+        IsDiscounted: product.isDiscounted,
+        IsExist: product.isExist,
+        selectedCat: product.productSelectedCategory[0].productCategoryId,
+      });
+    })
   }
 }

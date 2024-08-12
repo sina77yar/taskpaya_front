@@ -85,3 +85,7 @@ export class ProductcolorsComponent implements OnInit {
     this.visibleEdit = false;
   }
 }
+function moment(arg0: string, arg1: string): any {
+  throw new Error('Function not implemented.');
+}
+

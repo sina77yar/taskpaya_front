@@ -12,8 +12,8 @@ export class ProductDTO {
         public isSpecial: boolean,
         public isDiscounted: boolean,
         public weight: string,
-        public Barcode: string,
-        public DiscountPercent: string,
+        public barcode: string,
+        public discountPercent: string,
         public productSelectedCategory:string
     ) {
 
