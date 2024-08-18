@@ -64,7 +64,7 @@ export class LoginComponent implements OnInit {
       this.authservice.getCurrentUser().subscribe(res => {
       })
       this.cookieService.set("tabagallery-cookie", res.data.token, res.data.expireTime * 60)
-      this._router.navigate(['dashboard'])
+      this._router.navigate(['products'])
     })
 
   }

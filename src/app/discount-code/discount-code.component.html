@@ -21,9 +21,7 @@
 
                                                             <!-- <p class="card-subtitle card-subtitle-dash">You have 50+ new requests</p> -->
                                                         </div>
-                                                        <div>
-                                                            <button class="btn btn-primary btn-lg text-white mb-0 me-0" type="button" (click)="AddCode()">اضافه کردن کد تخفیف جدید</button>
-                                                        </div>
+
                                                     </div>
                                                     <div class="table-responsive  mt-1">
                                                         <p-table styleClass="p-datatable-gridlines" [value]="dataitems" [paginator]="true" [rows]="5" [tableStyle]="{ 'min-width': '50rem','font-family': 'iransans','text-align': 'right' }">
@@ -42,7 +40,8 @@
                                                                     <td colspan="4" style="text-align:center">{{ item.expireDate}} </td>
 
                                                                     <td colspan="1" style="text-align:center">
-                                                                        <button class="btn btn-warning btn-sm  text-white mb-0 me-0" type="button" (click)="EditColor(item.id,item.colorName)">ویرایش</button>
+                                                                        <button class="btn btn-danger btn-sm  text-white mb-0 me-0" *ngIf="item.isDeleted==false" type="button" (click)="changeActive(item.id)">غیرفعال سازی</button>
+                                                                        <button class="btn btn-success btn-sm  text-white mb-0 me-0" *ngIf="item.isDeleted==true" type="button" (click)="changeActive(item.id)">فعال سازی</button>
 
                                                                     </td>
                                                                 </tr>
@@ -55,7 +54,42 @@
                                     </div>
 
                                 </div>
+                                <div class="col-md-12 grid-margin stretch-card" dir="rtl">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="d-sm-flex justify-content-between align-items-start">
+                                                <div>
+                                                    <h4 class="card-title card-title-dash">ثبت کد تخفیف جدید</h4>
 
+                                                    <!-- <p class="card-subtitle card-subtitle-dash">You have 50+ new requests</p> -->
+                                                </div>
+                                                <div>
+                                                </div>
+                                            </div>
+                                            <form class="forms-sample" [formGroup]="addCodeForm">
+                                                <div class="row">
+                                                    <div class="form-group col-4">
+                                                        <label for="exampleInputUsername1">کد</label>
+                                                        <input type="text" class="form-control" formControlName="code" name="ColorName" placeholder="کد">
+                                                    </div>
+                                                    <div class="form-group col-4">
+                                                        <label for="exampleInputUsername1">مقدار به تومان</label>
+                                                        <input type="number" class="form-control" formControlName="amount" name="ColorName" placeholder="مقدار به تومان">
+                                                    </div>
+                                                    <div class="form-group col-4">
+                                                        <label for="exampleInputUsername1">تاریخ انقضا(به میلادی)</label>
+                                                        <div class="content" [dir]="isPersian? 'rtl': 'lrt'">
+                                                            <p-calendar dateFormat="dd/mm/yy" [(ngModel)]="date" formControlName="date" placeholder="انتخاب کنید" [showIcon]="true" inputId="icon"></p-calendar>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <button class="btn btn-primary btn-lg text-white mb-0 me-0" type="button" (click)="AddCode()">ثبت</button>
+
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -69,50 +103,6 @@
 </div>
 
 
-
-<p-dialog header="افزودن کد جدید" [modal]="true" [(visible)]="visible" [style]="{ 'width': '50rem','font-family':'iransans'}">
-    <div class="col-md-12 grid-margin stretch-card" dir="rtl">
-        <div class="card">
-            <div class="card-body">
-                <form class="forms-sample">
-                    <div class="form-group">
-                        <label for="exampleInputUsername1">کد</label>
-                        <input type="text" class="form-control" [(ngModel)]="ColorName" name="ColorName" placeholder="کد">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputUsername1">تاریخ انقضا</label>
-
-                        <div class="content" [dir]="isPersian? 'rtl': 'lrt'">
-
-
-                        </div>
-
-                    </div>
-                    <button type="submit" class="btn btn-primary me-2 m-2" (click)="SubmitNewColor()">ثبت</button>
-                    <button class="btn btn-light" (click)="closeModal()">خروج</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</p-dialog>
-
-<p-dialog header="ویرایش رنگ" [modal]="true" [(visible)]="visibleEdit" [style]="{ 'width': '50rem','font-family':'iransans'}">
-    <div class="col-md-12 grid-margin stretch-card" dir="rtl">
-        <div class="card">
-            <div class="card-body">
-                <form class="forms-sample" [formGroup]="editForm">
-                    <div class="form-group">
-                        <label for="exampleInputUsername1">نام رنگ</label>
-                        <input type="text" class="form-control" formControlName="colorName" placeholder="نام رنگ">
-                    </div>
-
-                    <button type="submit" class="btn btn-primary me-2 m-2" (click)="SubmitEditColor()">ثبت</button>
-                    <button class="btn btn-light" (click)="closeModal()">خروج</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</p-dialog>
 
 
 <swal #emptyField title="تمامی موارد باید پر شود" position="top-end" icon="error" [showConfirmButton]="false" [timer]="3000">

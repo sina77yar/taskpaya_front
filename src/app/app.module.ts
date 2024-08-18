@@ -16,17 +16,16 @@ import { ProductsizeComponent } from './products/productsize/productsize.compone
 import { MultiSelectModule } from 'primeng/multiselect';
 import { AdminLayoutModule } from './layouts/admin-layout/admin-layout.module';
 import { DiscountCodeComponent } from './discount-code/discount-code.component';
-import { DpDatePickerModule } from 'ng2-jalali-date-picker';
-
+import { DpDatePickerModule } from 'ng2-jalali-date-picker/date-picker.module';
+import { ContactussettingComponent } from './setting/contactussetting/contactussetting.component';
+import { KendoJalaliDateInputsModule } from '@tiampersian/kendo-jalali-date-inputs'
+import { CommonModule } from '@angular/common';
+import { QuillModule } from 'ngx-quill';
 @NgModule({
   declarations: [
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
-
-
-
-
   ],
   imports: [
     BrowserModule,
@@ -34,10 +33,9 @@ import { DpDatePickerModule } from 'ng2-jalali-date-picker';
     AppRoutingModule,
     ComponentsModule,
     AdminLayoutModule,
-    
+    KendoJalaliDateInputsModule, QuillModule.forRoot(),
   ],
-  providers: [
-    DpDatePickerModule ,
+  providers: [CommonModule,
     CookieService, {
       provide: HTTP_INTERCEPTORS,
       useClass: TabaInterceptor,

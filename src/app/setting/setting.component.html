@@ -1,1 +1,110 @@
-<p>setting works!</p>
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="home-tab">
+
+                <div class="tab-content tab-content-basic">
+                    <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview">
+
+                        <div class="row">
+                            <div class="col-lg-8 d-flex flex-column ">
+                                <div class="row flex-grow">
+                                    <div class="col-12  grid-margin p-0 ">
+                                        <div class="card card-rounded">
+                                            <div class="card-body" dir="rtl">
+                                                <div class="justify-content-between align-items-start">
+                                                    <div>
+                                                        <h4 class="card-title card-title-dash">اطلاعات تماس</h4>
+                                                        <h5 class="card-subtitle card-subtitle-dash">در این قسمت اطلاعات مربوط به ادرس و تماس و شبکه اجتماعی خود را وارد کنید</h5>
+                                                        <div class="col-md-12 grid-margin  p-0" dir="rtl">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <form class="forms-sample" [formGroup]="contactForm">
+                                                                        <div class="row">
+                                                                            <div class="form-group col-md-6">
+                                                                                <label for="exampleInputUsername1">شماره تماس 1</label>
+                                                                                <span class="m-1" style="color: red; font-size: 10pt;">*</span>
+                                                                                <input type="text" class="form-control" formControlName="Phone1">
+                                                                            </div>
+                                                                            <div class="form-group col-md-6">
+                                                                                <label for="exampleInputUsername1">شماره تماس 2</label>
+                                                                                <span class="m-1" style="color: red; font-size: 10pt;">*</span>
+                                                                                <input type="text" class="form-control" formControlName="Phone2">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="form-group col-md-6">
+                                                                                <label for="exampleInputUsername1">ایمیل</label>
+                                                                                <span class="m-1" style="color: red; font-size: 10pt;">*</span>
+                                                                                <input type="email" class="form-control" formControlName="email">
+                                                                            </div>
+                                                                            <div class="form-group col-md-6">
+                                                                                <label for="exampleInputUsername1">آدرس</label>
+                                                                                <span class="m-1" style="color: red; font-size: 10pt;">*</span>
+                                                                                <input type="text" class="form-control" formControlName="Address">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="form-group col-md-6">
+                                                                                <label for="exampleInputUsername1">روزها و ساعت کاری</label>
+                                                                                <span class="m-1" style="color: red; font-size: 10pt;">*</span>
+                                                                                <input type="text" class="form-control" formControlName="Opentime">
+                                                                            </div>
+                                                                            <div class="form-group col-md-6">
+                                                                                <label for="exampleInputUsername1">لوکیشن گوگل مپ</label>
+                                                                                <span class="m-1" style="color: red; font-size: 10pt;">*</span>
+                                                                                <input type="text" class="form-control" formControlName="location">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="form-group col-md-6">
+                                                                                <label for="exampleInputUsername1">آی دی اینستاگرام</label>
+                                                                                <span class="m-1" style="color: red; font-size: 10pt;">*</span>
+                                                                                <input type="text" class="form-control" formControlName="instagram">
+                                                                            </div>
+                                                                            <div class="form-group col-md-6">
+                                                                                <label for="exampleInputUsername1">آی دی واتسپ</label>
+                                                                                <span class="m-1" style="color: red; font-size: 10pt;">*</span>
+                                                                                <input type="text" class="form-control" formControlName="whatsapp">
+                                                                            </div>
+                                                                        </div>
+                                                                        <button type="submit " class="btn btn-primary me-2 m-2 " (click)="ChangeContactInfo()">ثبت</button>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 d-flex flex-column">
+                                <div class="row flex-grow">
+                                    <div class="col-md-6 col-lg-12 grid-margin ">
+                                        <div class="card bg-bluegray-900 card-rounded">
+                                            <div class="card-body pb-5">
+                                                <h4 class="card-title card-title-dash text-white mb-4">اطلاعاتی که قرار میدهید در این قسمت سایت نمایش داده میشود</h4>
+                                                <img src="assets/images/dashboard/contactpage.png" style="width: 100%; height: 40%;">
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<swal #emptyField title="تمامی موارد باید پر شود" position="top-end" icon="error" [showConfirmButton]="false" [timer]="3000">
+</swal>
+<swal #successFire title="با موفقیت انجام شد" position="top-end" icon="success" [showConfirmButton]="false" [timer]="3000">
+</swal>

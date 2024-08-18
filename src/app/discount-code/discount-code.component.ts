@@ -7,6 +7,8 @@ import moment from 'jalali-moment';
 import { NzI18nService, en_US, fa_IR } from 'ngz-shamsi-datepicker';
 import { OrderService } from '../services/order.service';
 import { format } from 'date-fns-jalali';
+import Swal from 'sweetalert2';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-discount-code',
@@ -16,7 +18,7 @@ import { format } from 'date-fns-jalali';
 export class DiscountCodeComponent implements OnInit {
   ranges = { "امروز": [new Date(), new Date()], 'این ماه': [new Date(), new Date()] };
   isPersian = false;
-  constructor(private orderService: OrderService, private i18n: NzI18nService) { this.i18n.setLocale(this.isPersian ? fa_IR : fa_IR); }
+  constructor(private datePipe: DatePipe, private orderService: OrderService, private i18n: NzI18nService) { this.i18n.setLocale(this.isPersian ? fa_IR : fa_IR); }
 
   dataitems: any[] = [];
   imagePath = ImagePath
@@ -30,9 +32,14 @@ export class DiscountCodeComponent implements OnInit {
   @ViewChild('successFire')
   public readonly successFire: SwalComponent;
   editForm: FormGroup;
-  dateObject = "";
+  date: Date;
+  addCodeForm: FormGroup;
   ngOnInit(): void {
-    // this.dateObject = moment('1395-11-22', 'jYYYY,jMM,jDD');
+    this.addCodeForm = new FormGroup({
+      code: new FormControl(null, [Validators.required]),
+      date: new FormControl(null, [Validators.required]),
+      amount: new FormControl(null, [Validators.required]),
+    })
     this.editForm = new FormGroup({
       colorName: new FormControl(null, [
         Validators.required,
@@ -44,8 +51,8 @@ export class DiscountCodeComponent implements OnInit {
   }
   GetData() {
     this.orderService.GetAllDiscountCode().subscribe(res => {
-      console.log(this.dataitems);
       this.dataitems = res.data;
+      console.log(this.dataitems);
 
       this.dataitems.forEach(item => {
         item.expireDate = format(new Date(item.expireDate), "yyyy/MM/dd");
@@ -53,42 +60,36 @@ export class DiscountCodeComponent implements OnInit {
 
     })
   }
-  SubmitNewColor() {
-    if (this.ColorName.split(' ').join('') == "") {
-      this.emptyField.fire();
-      return
-    } else {
-      // this.productService.AddProductColor(this.ColorName).subscribe(res => {
-      //   this.successFire.fire();
-      //   this.ColorName = null;
-      //   this.visible = false;
-      //   this.GetAllProductsWithCat();
-      // })
-    }
-  }
-  SubmitEditColor() {
-    // var CN = this.editForm.controls["colorName"].value;
-    // if (CN.split(' ').join('') == "") {
-    //   this.emptyField.fire();
-    //   return
-    // } else {
-    //   this.productService.EditProductColor(CN, this.selectedItemId).subscribe(res => {
-    //     this.successFire.fire();
-    //     this.ColorName = null;
-    //     this.visibleEdit = false;
-    //     this.GetAllProductsWithCat();
-    //   })
-    // }
-  }
+
+
   AddCode() {
-    this.visible = true;
+    // this.visible = true;
+
+    if (this.addCodeForm.valid) {
+
+      const codeData = this.addCodeForm.controls['code'].value;
+      var dateData = this.addCodeForm.controls['date'].value;
+      const amountData = this.addCodeForm.controls['amount'].value;
+      dateData = moment().locale("fa").format('YYYY/MM/DD')
+
+      console.log(dateData);
+      this.orderService.addNewDiscountCode(codeData, dateData, amountData).subscribe(res => {
+        console.log(res.data);
+        if (res.status === "success") this.successFire.fire();
+        this.GetData();
+        this.addCodeForm.reset();
+      })
+    }
+    else {
+      this.emptyField.fire()
+    }
+
   }
-  EditColor(id, colorName) {
-    this.selectedItemId = id;
-    this.editForm.patchValue({
-      colorName: colorName
+  changeActive(id) {
+    this.orderService.changediscountActive(id).subscribe(res => {
+      if (res.status === "success") this.successFire.fire();
+      this.GetData()
     })
-    this.visibleEdit = true;
   }
   onUpload(e) { }
   closeModal() {
@@ -97,9 +98,9 @@ export class DiscountCodeComponent implements OnInit {
   }
 
 
-  onChange(e: any) {
-    console.log(e);
-
+  onChange(result: Date) {
+    debugger
+    console.log('onChange: ', result);
   }
 }
 

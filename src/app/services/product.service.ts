@@ -46,6 +46,9 @@ export class ProductService {
   getProductGalleryById(id: number): Observable<IResponseResult<ProductGallery>> {
     return this.http.get<IResponseResult<ProductGallery>>('api/Products/GetSingleProductGallery/' + id)
   }
+  DeletePhotoById(id: number): Observable<IResponseResult<ProductGallery>> {
+    return this.http.get<IResponseResult<ProductGallery>>('api/Products/DeletePhotoById/' + id)
+  }
   getRelatedProduct(ProductId: number): Observable<IResponseResult<ProductDTO[]>> {
     return this.http.get<IResponseResult<ProductDTO[]>>('api/Products/GetRelatedProducts/' + ProductId)
   }
@@ -95,6 +98,20 @@ export class ProductService {
     return this.http.post(
       `api/Products/AddProduct`,
       fd)
+  }
+  EditProduct(fd: FormData) {
+    debugger
+    // return this.http.post('api/Products/AddProduct', fd, this.headers)
+    return this.http.post(
+      `api/Products/EditProduct`,
+      fd)
+  }
+  AddProductGallery(fd: FormData): Observable<IResponseResult<any>> {
+    debugger
+    // return this.http.post('api/Products/AddProduct', fd, this.headers)
+    return this.http.post<IResponseResult<any>>(
+      `api/Products/AddProductGallery`,
+      fd,)
   }
   Get10LimitedProducts(): Observable<IResponseResult<any>> {
     return this.http.get<IResponseResult<any>>('api/Products/Get10LimitedProducts');

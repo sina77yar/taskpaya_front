@@ -1,18 +1,18 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar" style="font-family: iransans;">
     <ul class="nav">
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a class="nav-link" href="index.html">
                 <i class="menu-icon fa fa fa-dashboard"></i>
                 <span class="menu-title">داشبورد</span>
             </a>
-        </li>
+        </li> -->
         <li class="nav-item nav-category">مدیریت محصولات</li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a class="nav-link" [routerLink]="'login'">
                 <i class="menu-icon fa fa-pencil"></i>
                 <span class="menu-title">ثبت جدید</span>
             </a>
-        </li>
+        </li> -->
         <li class="nav-item">
             <a class="nav-link" [routerLink]="'products'">
                 <i class="menu-icon fa fa-list-ol"></i>
@@ -58,10 +58,13 @@
             </a>
             <li class="nav-item nav-category">مرتبط با تنظیمات</li>
             <li class="nav-item">
-                <a class="nav-link" href="docs/documentation.html">
-                    <i class="menu-icon fa fa-cogs"></i>
-                    <span class="menu-title">تنظیمات</span>
+                <a class="nav-link" [routerLink]="'setting'">
+                    <i class="menu-icon fa fa-phone"></i>
+                    <span class="menu-title">اطلاعات فروشگاه</span>
                 </a>
             </li>
+       
+ 
+          
     </ul>
 </nav>

@@ -40,12 +40,12 @@
                                                         <td colspan="1">
                                                             <img [alt]="product.productName" src="{{ imagePath+product.imageName }}" width="50" class="vertical-align-middle" />
                                                         </td>
-                                                        <td colspan="4">{{ product.description }}</td>
+                                                        <td colspan="4" [innerHTML]="product.description|safeHTML"></td>
                                                         <td colspan="1">{{ product.price|number }} تومان </td>
                                                         <td colspan="1">{{ product.stock }}</td>
                                                         <td colspan="1">
                                                             <button class="btn btn-warning btn-sm  text-white mb-0 me-0" type="button" (click)="ShowEditProduct(product.id)">ویرایش</button>
-                                                            <button class="btn btn-info btn-sm  text-white mb-0 me-0" type="button" (click)="ShowGalleryProduct()">گالری</button>
+                                                            <button class="btn btn-info btn-sm  text-white mb-0 me-0" type="button" (click)="ShowGalleryProduct(product.id)">گالری</button>
                                                         </td>
                                                     </tr>
                                                 </ng-template>
@@ -102,8 +102,6 @@
 
 
 
-
-
 <p-dialog header="افزودن محصول جدید" [modal]="true" [(visible)]="visible" [style]="{ 'width': '50rem','font-family':'iransans'}">
     <div class="col-md-12 grid-margin stretch-card" dir="rtl">
         <div class="card">
@@ -124,7 +122,7 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1">توضیحات</label>
                         <span class="m-1" style="color: red; font-size: 10pt;">*</span>
-                        <input type="email" class="form-control" formControlName="Description" placeholder="توضیحات">
+                        <p-editor dir="ltr" formControlName="Description"></p-editor>
                     </div>
                     <div class="row">
 
@@ -209,21 +207,7 @@
 
                         </div>
                     </div>
-                    <div class="form-group pt-3">
-                        <label for="exampleInputConfirmPassword1">گالری تصاویر محصول</label>
-                        <span class="m-1" style="color: red; font-size: 10pt;">*</span>
-                        <span class="m-1" style="color: red; font-size: 10pt;">برای زیبایی بهتر سایز عکس را 231*292 پیکسل در نظر بگیرید</span>
 
-                        <p-fileUpload [customUpload]="true" (onRemove)="onremoves($event)" (uploadHandler)="onFilesSelected($event)" [auto]="true" showUploadButton="false" chooseStyleClass="ml-1" cancelLabel="لغو همه" chooseLabel="انتخاب کنید" mode="advanced" name="demo[]" multiple="multiple"
-                            accept="image/*" maxFileSize="1000000">
-                            <ng-template>
-                                <ul *ngIf="uploadedFiles.length">
-                                    <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
-                                </ul>
-                            </ng-template>
-                        </p-fileUpload>
-
-                    </div>
                     <button type="submit " class="btn btn-primary me-2 m-2 " (click)="SubmitNewProduct()">ثبت</button>
                     <button class="btn btn-light " (click)="closeModal() ">خروج</button>
                 </form>
@@ -236,7 +220,7 @@
     <div class="col-md-12 grid-margin stretch-card" dir="rtl">
         <div class="card">
             <div class="card-body">
-                <form class="forms-sample" [formGroup]="productForm">
+                <form class="forms-sample" [formGroup]="editForm">
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="exampleInputUsername1">بارکد محصول</label>
@@ -252,7 +236,8 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1">توضیحات</label>
                         <span class="m-1" style="color: red; font-size: 10pt;">*</span>
-                        <input type="email" class="form-control" formControlName="Description" placeholder="توضیحات">
+                        <p-editor dir="ltr" formControlName="Description"></p-editor>
+
                     </div>
                     <div class="row">
 
@@ -327,7 +312,7 @@
                         </div>
                     </div>
 
-                    <button type="submit " class="btn btn-primary me-2 m-2 " (click)="SubmitNewProduct()">ثبت</button>
+                    <button type="submit " class="btn btn-primary me-2 m-2 " (click)="SubmitEditProduct()">ثبت</button>
                     <button class="btn btn-light " (click)="closeModal() ">خروج</button>
                 </form>
             </div>
@@ -341,6 +326,17 @@
     <div class="col-md-12 grid-margin stretch-card" dir="rtl">
         <div class="card">
             <div class="card-body">
+                <label for="exampleInputConfirmPassword1">گالری تصاویر محصول</label>
+                <p-galleria [value]="productGallery" [containerStyle]="{'max-width': 'auto','height':'auto'}" [numVisible]="5" [showThumbnails]="false" [showIndicators]="true">
+                    <ng-template pTemplate="item" let-item>
+                        <img style="max-width: 400px;max-height: 300px;" src="{{galleryPath}}/{{item.productId}}/{{item.imageName}}" [alt]="item.alt" />
+                        <div class="car-buttons mt-5">
+                            <p-button type="button" styleClass="p-button-danger p-button-rounded mr-2" icon="pi pi-trash" (click)="deletePhoto(item.id)"></p-button>
+                        </div>
+                    </ng-template>
+
+                </p-galleria>
+
                 <form class="forms-sample" [formGroup]="productForm">
 
                     <div class="form-group pt-3">
@@ -358,7 +354,7 @@
                         </p-fileUpload>
 
                     </div>
-                    <button type="submit " class="btn btn-primary me-2 m-2 " (click)="SubmitNewProduct()">ثبت</button>
+                    <button type="submit " class="btn btn-primary me-2 m-2 " (click)="AddproductGallery()">ثبت</button>
                     <button class="btn btn-light " (click)="closeModal() ">خروج</button>
                 </form>
             </div>

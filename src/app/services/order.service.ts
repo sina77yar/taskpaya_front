@@ -44,4 +44,14 @@ export class OrderService {
     GetAllDiscountCode(): Observable<IResponseResult<any>> {
         return this.http.get<IResponseResult<any>>('api/Order/GetAllDiscountCode');
     }
+    addNewDiscountCode(code: any, date: any, amount: any): Observable<IResponseResult<any>> {
+        const params = new HttpParams().set('code', code).set('date', date).set('amount', amount)
+        return this.http.get<IResponseResult<any>>('api/Order/add-discount/', { params });
+    }
+    changediscountActive(discountId: number): Observable<IResponseResult<any>> {
+        return this.http.get<IResponseResult<any>>('api/Order/changediscountActive/' + discountId);
+    }
+    checkdiscountCode(discountCode: string): Observable<IResponseResult<any>> {
+        return this.http.get<IResponseResult<any>>('api/Order/checkdiscountCode/' + discountCode);
+    }
 }

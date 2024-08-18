@@ -1,6 +1,6 @@
 
 import { HttpClientModule } from '@angular/common/http'; import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
@@ -28,14 +28,26 @@ import { SelectButtonModule } from 'primeng/selectbutton';
 import { CheckboxModule } from 'primeng/checkbox';
 import { DiscountCodeComponent } from '../../discount-code/discount-code.component';
 // import { ToastrModule } from 'ngx-toastr';
-import * as jalaliMoment from "jalali-moment";
+import moment, * as jalaliMoment from "jalali-moment";
 import { PersianCalendarService } from '../shared/PersianCalendarService';
 import { DpDatePickerModule } from 'ng2-jalali-date-picker';
-import { NzDatePickerModule, NzDateAdapter } from 'ngz-shamsi-datepicker';
-
+import { NzDatePickerModule, } from 'ngz-shamsi-datepicker';
+import { ContactussettingComponent } from '../../setting/contactussetting/contactussetting.component';
+import { CandyDateMode, NzDateAdapter, WeekDayIndex } from 'ngx-antd-jalali/core';
+import { Locale } from 'date-fns';
+import { KendoJalaliDateInputsModule } from '@tiampersian/kendo-jalali-date-inputs';
+import { CalendarModule } from 'primeng/calendar';
+import { EditorModule } from 'primeng/editor';
+import { QuillModule } from 'ngx-quill';
+import { SafeHTMLPipe } from '../../Utilities/replace-all.pipe';
+import {GalleriaModule} from 'primeng/galleria';
+import {CarouselModule} from 'primeng/carousel';
 @NgModule({
   imports: [
+    QuillModule.forRoot(),
     CommonModule,
+    EditorModule,
+    CalendarModule,
     RouterModule.forChild(AdminLayoutRoutes),
     ReactiveFormsModule,
     FormsModule,
@@ -48,11 +60,14 @@ import { NzDatePickerModule, NzDateAdapter } from 'ngz-shamsi-datepicker';
     DropdownModule,
     CheckboxModule,
     NzDatePickerModule,
+    KendoJalaliDateInputsModule,
+    GalleriaModule,
+    CarouselModule,
     SweetAlert2Module.forRoot(),
     // NgbModule,
     // ClipboardModule,
   ],
-  declarations: [
+  declarations: [SafeHTMLPipe,
     // NavbarComponent,
     // SidebarComponent,
     DashboardComponent,
@@ -64,8 +79,9 @@ import { NzDatePickerModule, NzDateAdapter } from 'ngz-shamsi-datepicker';
     ProductcolorsComponent,
     ProductsizeComponent,
     DiscountCodeComponent,
+    ContactussettingComponent,
   ],
-  providers: [DpDatePickerModule,],
+  providers: [DatePipe, SafeHTMLPipe],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
   ],

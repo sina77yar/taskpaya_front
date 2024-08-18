@@ -7,6 +7,8 @@ import { ProductsComponent } from '../../products/products.component';
 import { ProductcolorsComponent } from '../../products/productcolors/productcolors.component';
 import { ProductsizeComponent } from '../../products/productsize/productsize.component';
 import { DiscountCodeComponent } from '../../discount-code/discount-code.component';
+import { SettingComponent } from '../../setting/setting.component';
+import { ContactussettingComponent } from '../../setting/contactussetting/contactussetting.component';
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
     { path: 'orders',      component: OrdersComponent },
@@ -16,4 +18,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'color',      component:     ProductcolorsComponent },
     { path: 'size',      component:     ProductsizeComponent },
     { path: 'discountcode',      component:     DiscountCodeComponent },
+    { path: 'contact',      component:     ContactussettingComponent },
+    { path: 'setting',      component:     SettingComponent },
 ];
